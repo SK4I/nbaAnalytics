@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -40,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.2"
     }
     packaging {
         resources {
@@ -58,6 +60,10 @@ dependencies {
     implementation(libs.compose.ui.ui.graphics)
     implementation(libs.compose.ui.ui.tooling.preview)
     implementation(libs.compose.material3.material3)
+    implementation(libs.hilt.compose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.google.compiler)
+    kapt(libs.hilt.compiler)
     implementation(libs.compose.material.android)
     implementation(libs.compose.navigation)
     testImplementation(libs.junit)

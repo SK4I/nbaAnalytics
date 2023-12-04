@@ -13,7 +13,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.nbaanalytics.ui.navigation.BottomNavigationBar
 import com.example.nbaanalytics.ui.navigation.NavigationApplication
 import com.example.nbaanalytics.ui.theme.NbaAnalyticsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
