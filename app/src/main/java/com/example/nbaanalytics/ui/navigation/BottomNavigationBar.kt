@@ -2,12 +2,15 @@ package com.example.nbaanalytics.ui.navigation
 
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.nbaanalytics.R
@@ -40,17 +43,28 @@ fun BottomNavigationBar(navController: NavController) {
                         }
                     }
                 },
-                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
-                selectedContentColor = Color.Blue,
-                unselectedContentColor = Color.Red
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = null,
+                        tint = Color.Black
+                    )
+                },
+                label = {
+                    Text(text = item.title,)
+                },
+                selectedContentColor = Color.White,
+                unselectedContentColor = Color.Black
             )
         }
     }
 }
 
-sealed class BottomNavItem(var title: String, var icon: Int, var route: String){
-    object Calendar: BottomNavItem("Calendar", androidx.core.R.drawable.notification_bg_normal, "calendar" )
-    object Standings: BottomNavItem("Standings", androidx.core.R.drawable.notification_bg_normal, "standings" )
-    object Favourites: BottomNavItem("Favourites", androidx.core.R.drawable.notification_bg_normal, "favourites" )
-    object Profile: BottomNavItem("Profile", androidx.core.R.drawable.notification_bg_normal, "profile" )
+sealed class BottomNavItem(var title: String, var icon: ImageVector, var route: String) {
+    object Calendar : BottomNavItem("Calendar", Icons.Default.Home, "calendar")
+    object Standings : BottomNavItem("Standings", Icons.Default.Home, "standings")
+    object Favourites :
+        BottomNavItem("Favourites", Icons.Default.Home, "favourites")
+
+    object Profile : BottomNavItem("Profile", Icons.Default.Home, "profile")
 }
