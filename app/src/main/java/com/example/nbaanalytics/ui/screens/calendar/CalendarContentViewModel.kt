@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CalendarContentViewModel @Inject constructor() : ViewModel() {
 
-    var viewState by mutableStateOf<PageViewState>(PageViewState.LoadingContent)
+    var viewState by mutableStateOf<PageViewState>(PageViewState.LoadedContent)
         private set
 
 }
