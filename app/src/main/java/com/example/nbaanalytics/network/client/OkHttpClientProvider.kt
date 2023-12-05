@@ -3,12 +3,13 @@ package com.example.nbaanalytics.network.client
 import android.content.Context
 import com.example.nbaanalytics.network.interceptors.OfflineInterceptor
 import com.example.nbaanalytics.network.interceptors.OnlineInterceptor
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Inject
 
 class OkHttpClientProvider @Inject constructor(
-    private val context: Context,
+    @ApplicationContext private val context: Context,
     private val offlineInterceptor: OfflineInterceptor,
     private val onlineInterceptor: OnlineInterceptor
 ) {

@@ -1,6 +1,19 @@
-package com.example.nbaanalytics.data.models
+package com.example.network_services.network.models
+
+import com.google.gson.annotations.SerializedName
 
 data class GamesModel(
-    val statusCode: Int,
-    val body: Int
-)
+    @SerializedName("get") var get: String? = null,
+    @SerializedName("parameters") var parameters: GamesParameters? = GamesParameters(),
+    @SerializedName("results") var results: Int? = null,
+    @SerializedName("response") var response: ArrayList<GamesResponse> = arrayListOf()
+) {
+    companion object {
+        val Empty: GamesModel = GamesModel(
+                get = null,
+                parameters = GamesParameters(),
+                results = null,
+                response = arrayListOf()
+        )
+    }
+}

@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
@@ -16,7 +17,7 @@ import javax.inject.Singleton
 class NetworkModule {
 
     @Provides
-    fun provideOfflineInterceptor(@ActivityContext context: Context) =
+    fun provideOfflineInterceptor(@ApplicationContext context: Context) =
         OfflineInterceptor(context)
 
     @Provides
@@ -25,7 +26,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        @ActivityContext context: Context,
+        @ApplicationContext context: Context,
         offlineInterceptor: OfflineInterceptor,
         onlineInterceptor: OnlineInterceptor
     ) = OkHttpClientProvider(context, offlineInterceptor, onlineInterceptor)
