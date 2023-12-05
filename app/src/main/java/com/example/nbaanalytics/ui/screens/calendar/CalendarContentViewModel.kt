@@ -18,11 +18,4 @@ class CalendarContentViewModel @Inject constructor() : ViewModel() {
     var viewState by mutableStateOf<PageViewState>(PageViewState.LoadingContent)
         private set
 
-
-    init {
-        viewModelScope.launch {
-            delay(2000)
-            viewState = PageViewState.LoadedContent
-        }
-    }
 }

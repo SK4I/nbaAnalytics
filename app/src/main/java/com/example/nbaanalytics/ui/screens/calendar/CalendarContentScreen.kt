@@ -6,9 +6,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun CalendarContentScreen(viewModel: CalendarContentViewModel = hiltViewModel()) {
-    viewModel.viewState.buildUI {
-        ContentScreen()
-    }
+    viewModel.viewState.buildUI(
+        onRefresh = {
+
+        },
+        ui = {
+            ContentScreen()
+        })
 }
 
 @Composable
