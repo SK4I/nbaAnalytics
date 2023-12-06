@@ -3,7 +3,6 @@ package com.example.nbaanalytics.ui.screens.calendar
 import androidx.compose.runtime.Composable
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -50,7 +48,10 @@ private fun CalendarItem(
     ) {
         Box(
             modifier = Modifier
-                .background(shape = CircleShape, color = Color.Transparent)
+                .background(
+                    shape = CircleShape,
+                    color = if (day.dayOfMonth == LocalDate.now().dayOfMonth && !isSelected) Color.LightGray else Color.Transparent
+                )
         ) {
             val dayOfWeek = day.dayOfWeek.toString().take(3)
             Column(
@@ -115,8 +116,7 @@ fun TopBarCalendar(onDaySelected: (LocalDate) -> Unit) {
                         }
                         .padding(8.dp)
                         .background(
-                            if (isSelected) MaterialTheme.colors.primary else Color.Transparent,
-                            CircleShape
+                            if (isSelected) MaterialTheme.colors.primary else Color.Transparent
                         ),
                     day = day,
                     isSelected = isSelected,

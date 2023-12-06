@@ -27,16 +27,18 @@ class CalendarContentViewModel @Inject constructor(private val todayGamesReposit
 
     private val todayDate = LocalDate.now().toString()
 
-    suspend fun fetchData(todayDate: String) {
-        todayGamesRepository.getTodayGames(todayDate).handleResult(::handleSuccess, ::handleFailure)
+    fun fetchData(todayDate: String) {
+        viewModelScope.launch {
+            todayGamesRepository.getTodayGames(todayDate)
+                .handleResult(::handleSuccess, ::handleFailure)
+        }
     }
 
     init {
-        viewModelScope.launch {
-            //TODO replace with actual api call when testing ui
-            viewState = PageViewState.LoadedContent
-            //fetchData(todayDate)
-        }
+        //TODO replace with actual api call when testing ui
+        viewState = PageViewState.LoadedContent
+        //fetchData(todayDate)
+
     }
 
     private fun handleSuccess(data: Any) {
