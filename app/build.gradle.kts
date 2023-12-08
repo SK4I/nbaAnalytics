@@ -83,4 +83,6 @@ dependencies {
     androidTestImplementation(libs.compose.ui.ui.test.junit4)
     debugImplementation(libs.compose.ui.ui.tooling)
     debugImplementation(libs.compose.ui.ui.test.manifest)
+
+    implementation(libs.coil.compose)
 }

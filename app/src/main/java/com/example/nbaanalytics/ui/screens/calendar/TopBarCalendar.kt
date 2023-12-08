@@ -1,7 +1,5 @@
 package com.example.nbaanalytics.ui.screens.calendar
 
-import androidx.compose.runtime.Composable
-
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +15,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -116,7 +115,8 @@ fun TopBarCalendar(onDaySelected: (LocalDate) -> Unit) {
                         }
                         .padding(8.dp)
                         .background(
-                            if (isSelected) MaterialTheme.colors.primary else Color.Transparent
+                            shape = CircleShape,
+                            color = if (isSelected) MaterialTheme.colors.primary else Color.Transparent
                         ),
                     day = day,
                     isSelected = isSelected,
